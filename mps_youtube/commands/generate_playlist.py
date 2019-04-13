@@ -34,7 +34,7 @@ def generate_playlist(sourcefile):
 
 def read_sourcefile(filename):
     """Read each line as a query from filename"""
-    with open(filename) as srcfl:
+    with open(filename, encoding='utf8') as srcfl:
         queries = list()
         for item in srcfl.readlines():
             clean_item = str(item).strip()

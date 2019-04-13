@@ -10,7 +10,7 @@ from pafy.backend_shared import extract_video_id
 def save():
     """ Save playlists.  Called each time a playlist is saved or deleted. """
     for pl in g.userpl:
-        with open(os.path.join(g.PLFOLDER, pl+'.m3u'), 'w') as plf:
+        with open(os.path.join(g.PLFOLDER, pl+'.m3u'), 'w', encoding='utf8') as plf:
             plf.write('#EXTM3U\n\n')
             for song in g.userpl[pl].songs:
                 plf.write('#EXTINF:%d,%s\n' % (song.length, song.title))
@@ -63,7 +63,7 @@ def read_m3u(m3u):
     songs = []
     expect_ytid = False
 
-    with open(m3u, 'r') as plf:
+    with open(m3u, 'r', encoding='utf8') as plf:
         if plf.readline().startswith('#EXTM3U'):
             for line in plf:
                 if line.startswith('#EXTINF:') and not expect_ytid:
@@ -99,7 +99,7 @@ def _convert_playlist_to_v2():
         return
 
     try:
-        with open(g.OLD_PLFILE, "rb") as plf:
+        with open(g.OLD_PLFILE, "rb", encoding='utf8') as plf:
             old_playlists = pickle.load(plf)
 
     except IOError:
@@ -141,7 +141,7 @@ def _convert_playlist_to_m3u():
         return
 
     try: 
-        with open(g.PLFILE, 'rb') as plf:
+        with open(g.PLFILE, 'rb', encoding='utf8') as plf:
             old_playlists = pickle.load(plf)
 
     except AttributeError:
@@ -155,7 +155,7 @@ def _convert_playlist_to_m3u():
         main.Playlist = Playlist
         main.Video = Video
 
-        with open(g.PLFILE, "rb") as plf:
+        with open(g.PLFILE, "rb", encoding='utf8') as plf:
             g.userpl = pickle.load(plf)
 
         os.mkdir(g.PLFOLDER)

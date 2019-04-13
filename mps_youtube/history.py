@@ -32,7 +32,7 @@ def load():
 
 def save():
     """ Save history.  Called each time history is updated. """
-    with open(g.HISTFILE, 'w') as hf:
+    with open(g.HISTFILE, 'w', encoding='utf8') as hf:
         hf.write('#EXTM3U\n\n')
         if 'history' in g.userhist:
             for song in g.userhist['history'].songs:
@@ -50,7 +50,7 @@ def _convert_to_m3u():
     elif not os.path.isfile(g.OLDHISTFILE):
         return
 
-    with open(g.OLDHISTFILE, "rb") as hf:
+    with open(g.OLDHISTFILE, "rb", encoding='utf8') as hf:
         g.userhist = pickle.load(hf)
 
     save()
