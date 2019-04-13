@@ -129,7 +129,7 @@ def open_save_view(action, name):
             name = util.get_near_name(name, g.userpl)
             saved = g.userpl.get(name)
 
-        elif action == "open":
+        if action == "open":
             g.active.songs = list(saved.songs)
             g.last_opened = name
             msg = util.F("pl loaded") % name
