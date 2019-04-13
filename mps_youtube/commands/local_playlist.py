@@ -128,6 +128,8 @@ def open_save_view(action, name):
         if not saved:
             name = util.get_near_name(name, g.userpl)
             saved = g.userpl.get(name)
+            if not saved:
+                return
 
         if action == "open":
             g.active.songs = list(saved.songs)
