@@ -1,3 +1,9 @@
+Install from this fork
+----------------------
+Installation with pip::
+
+    pip install --upgrade git+git://github.com/minorczyka/mps-youtube.git@0.2.8_fixes
+
 mps-youtube
 ===========
 
