@@ -389,14 +389,8 @@ def _launch_player(song, songdata, cmd):
     # not supported by encoding
     cmd = [util.xenc(i) for i in cmd]
 
-    metadata = util._get_metadata(song.title)
-
-    if metadata == None :
-        arturl = "https://i.ytimg.com/vi/%s/default.jpg" % song.ytid
-        metadata = (song.ytid, song.title, song.length, arturl, [''], '')
-    else :
-        arturl = metadata['album_art_url']
-        metadata = (song.ytid, metadata['track_title'], song.length, arturl, [metadata['artist']], metadata['album'])
+    arturl = "https://i.ytimg.com/vi/%s/default.jpg" % song.ytid
+    metadata = (song.ytid, song.title, song.length, arturl, [''], '')
 
     input_file = None
     if ("mplayer" in config.PLAYER.get) or ("mpv" in config.PLAYER.get):
