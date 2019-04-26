@@ -333,6 +333,9 @@ def _generate_real_playerargs(song, override, stream, isvideo, softrepeat):
             if softrepeat:
                 util.list_update("--loop-file", args)
 
+            if not isvideo:
+                util.list_update("--video=no", args)
+
     elif "vlc" in config.PLAYER.get:
         util.list_update("--play-and-exit", args)
 
